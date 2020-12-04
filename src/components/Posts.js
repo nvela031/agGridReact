@@ -163,7 +163,13 @@ class Posts extends Component {
 
   reviewPosts = (event) => {
     event.preventDefault();
-    this.navigateTo("review");
+    const selectedNodes = this.gridApi.getSelectedNodes();
+    const selectedData = selectedNodes.map((post) => post.data);
+    const selectedDataString = selectedData
+      .map((post) => "id: " + post.id + " title: " + post.title)
+      .join("\n");
+    alert(`selected Posts: ${selectedDataString}`);
+    // this.navigateTo("review");
   };
 
   navigateTo = (destination) => {
